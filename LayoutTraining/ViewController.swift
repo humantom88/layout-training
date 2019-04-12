@@ -13,13 +13,21 @@ class ViewController: UIViewController, HeroTableDelegate {
 	func handleHeroSelect(hero: HeroEntity) {
 		self.heroImageView.image = UIImage(named: hero.resourceId)
 		self.heroImageView.backgroundColor = hero.backgroundColor
+		self.heroImageView.layer.shadowColor = hero.backgroundColor.cgColor
 	}
+	
+	let topImageContainerBackgroundImageView: UIImageView = {
+		let bgImage = UIImageView(image: UIImage(named: "wall"))
+		bgImage.contentMode = .scaleAspectFill
+		
+		return bgImage
+	}()
 	
 	let topImageContainerView: UIView = {
 		let containerView = UIView()
 		containerView.backgroundColor = .white
 		containerView.translatesAutoresizingMaskIntoConstraints = false
-		
+
 		return containerView
 	}()
 	
@@ -63,13 +71,21 @@ class ViewController: UIViewController, HeroTableDelegate {
 	
 	private func setupLayout() {
 		topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-		topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.62).isActive = true
+		topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.70).isActive = true
 		topImageContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 		topImageContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+
+		topImageContainerView.addSubview(topImageContainerBackgroundImageView)
+
+		topImageContainerBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+		topImageContainerBackgroundImageView.topAnchor.constraint(equalTo: topImageContainerView.topAnchor).isActive = true
+		topImageContainerBackgroundImageView.bottomAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
+		topImageContainerBackgroundImageView.leadingAnchor.constraint(equalTo: topImageContainerView.leadingAnchor).isActive = true
+		topImageContainerBackgroundImageView.trailingAnchor.constraint(equalTo: topImageContainerView.trailingAnchor).isActive = true
 		topImageContainerView.addSubview(heroImageView)
 		
 		heroImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
-		heroImageView.widthAnchor.constraint(equalTo: topImageContainerView.widthAnchor, multiplier: 0.62).isActive = true
+		heroImageView.widthAnchor.constraint(equalTo: heroImageView.heightAnchor, multiplier: 0.75).isActive = true
 		heroImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.8).isActive = true
 		heroImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
 		setupHeroImageViewShadows()
@@ -86,36 +102,32 @@ class ViewController: UIViewController, HeroTableDelegate {
 		heroesTableViewController.tableView.trailingAnchor.constraint(equalTo: bottomContainerView.trailingAnchor).isActive = true
 	}
 	
-	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-		super.viewWillTransition(to: size, with: coordinator)
+	override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.willTransition(to: newCollection, with: coordinator)
+		self.setupHeroImageViewShadows()
 	}
 	
 	private func setupHeroImageViewShadows () {
 		let heroIV: UIImageView = self.heroImageView
 		heroIV.layoutIfNeeded()
+		heroIV.layer.borderWidth = 1
+		heroIV.layer.borderColor = UIColor(white: 0, alpha: 0.15).cgColor
+		heroIV.layer.borderWidth = 2
 		heroIV.layer.cornerRadius = 20
-
 		heroIV.layer.backgroundColor = UIColor.darkGray.cgColor
-		
 		heroIV.layer.shadowColor = UIColor.black.cgColor
 		heroIV.layer.shadowRadius = 10
 		heroIV.layer.shadowOpacity = 1
 		
 		let shadowHeight: CGFloat = 18
 		let shadowPath = CGMutablePath()
-		shadowPath.move(to: CGPoint(x: heroIV.layer.shadowRadius,
-									y: heroIV.layer.bounds.height - shadowHeight))
-		shadowPath.addLine(to: CGPoint(x: heroIV.layer.shadowRadius,
-									   y: heroIV.layer.bounds.height + shadowHeight))
-		shadowPath.addLine(to: CGPoint(x: heroIV.layer.bounds.width - heroIV.layer.shadowRadius,
-									   y: heroIV.layer.bounds.height + shadowHeight))
-		shadowPath.addLine(to: CGPoint(x: heroIV.layer.bounds.width - heroIV.layer.shadowRadius,
-									   y: heroIV.layer.bounds.height - shadowHeight))
+		shadowPath.move(to: CGPoint(x: heroIV.layer.shadowRadius, y: heroIV.layer.bounds.height - shadowHeight))
+		shadowPath.addLine(to: CGPoint(x: heroIV.layer.shadowRadius, y: heroIV.layer.bounds.height + shadowHeight))
+		shadowPath.addLine(to: CGPoint(x: heroIV.layer.bounds.width - heroIV.layer.shadowRadius, y: heroIV.layer.bounds.height + shadowHeight))
+		shadowPath.addLine(to: CGPoint(x: heroIV.layer.bounds.width - heroIV.layer.shadowRadius, y: heroIV.layer.bounds.height - shadowHeight))
 		
-		shadowPath.addQuadCurve(to: CGPoint(x: heroIV.layer.shadowRadius,
-											y: heroIV.layer.bounds.height - shadowHeight),
-								control: CGPoint(x: heroIV.layer.bounds.width / 2,
-												 y: heroIV.layer.bounds.height + shadowHeight))
+		shadowPath.addQuadCurve(to: CGPoint(x: heroIV.layer.shadowRadius, y: heroIV.layer.bounds.height - shadowHeight),
+								control: CGPoint(x: heroIV.layer.bounds.width / 2, y: heroIV.layer.bounds.height + shadowHeight))
 		
 		heroIV.layer.shadowPath = shadowPath
 	}
