@@ -19,9 +19,13 @@ class HeroTableViewCell: UITableViewCell {
 	}
 
 	public func setInternalFields(hero: HeroEntity) {
-		self.textLabel?.text = hero.name
-		self.bgColor = hero.backgroundColor
-		self.resourceId = hero.resourceId
+		if let label = self.textLabel {
+			label.textAlignment = .center
+			label.text = hero.name
+		}
+		
+		bgColor = hero.backgroundColor
+		resourceId = hero.resourceId
 	}
 
 	override func setSelected(_ selected: Bool, animated: Bool) {

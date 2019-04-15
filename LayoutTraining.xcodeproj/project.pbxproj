@@ -15,6 +15,8 @@
 		649EF942226058BF00894FFF /* HeroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649EF941226058BF00894FFF /* HeroTableViewCell.swift */; };
 		649EF9442260597D00894FFF /* HeroEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649EF9432260597D00894FFF /* HeroEntity.swift */; };
 		649EF946226079E400894FFF /* HeroTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649EF945226079E400894FFF /* HeroTableDelegate.swift */; };
+		649EF94E22644AD600894FFF /* HeroCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649EF94D22644AD600894FFF /* HeroCardView.swift */; };
+		649EF95022644B7A00894FFF /* HeroCardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649EF94F22644B7A00894FFF /* HeroCardProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		649EF941226058BF00894FFF /* HeroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableViewCell.swift; sourceTree = "<group>"; };
 		649EF9432260597D00894FFF /* HeroEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroEntity.swift; sourceTree = "<group>"; };
 		649EF945226079E400894FFF /* HeroTableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableDelegate.swift; sourceTree = "<group>"; };
+		649EF94D22644AD600894FFF /* HeroCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCardView.swift; sourceTree = "<group>"; };
+		649EF94F22644B7A00894FFF /* HeroCardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroCardProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				649EF941226058BF00894FFF /* HeroTableViewCell.swift */,
 				649EF9432260597D00894FFF /* HeroEntity.swift */,
 				649EF945226079E400894FFF /* HeroTableDelegate.swift */,
+				649EF94D22644AD600894FFF /* HeroCardView.swift */,
+				649EF94F22644B7A00894FFF /* HeroCardProtocol.swift */,
 			);
 			path = LayoutTraining;
 			sourceTree = "<group>";
@@ -146,7 +152,9 @@
 				649EF9302260563400894FFF /* ViewController.swift in Sources */,
 				649EF92E2260563400894FFF /* AppDelegate.swift in Sources */,
 				649EF940226056C200894FFF /* HeroesTableViewController.swift in Sources */,
+				649EF95022644B7A00894FFF /* HeroCardProtocol.swift in Sources */,
 				649EF9442260597D00894FFF /* HeroEntity.swift in Sources */,
+				649EF94E22644AD600894FFF /* HeroCardView.swift in Sources */,
 				649EF942226058BF00894FFF /* HeroTableViewCell.swift in Sources */,
 				649EF946226079E400894FFF /* HeroTableDelegate.swift in Sources */,
 			);
