@@ -10,6 +10,4 @@ import Foundation
 
 protocol HeroCardProtocol {
 	func updateHeroCard(entity: HeroEntity);
-	
-	func updateHeroImageShadows();
 }

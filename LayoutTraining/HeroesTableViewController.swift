@@ -22,10 +22,6 @@ class HeroesTableViewController: UITableViewController {
 		HeroEntity(name: "Eggman", resourceId:"eggman", backgroundColor: UIColor.black)
 	]
 	
-	private func setupTableView () {
-		self.tableView.register(HeroTableViewCell.self, forCellReuseIdentifier: cellId)
-	}
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -55,5 +51,11 @@ class HeroesTableViewController: UITableViewController {
 		if let heroTD = heroTableDelegate {
 			heroTD.handleHeroSelect(hero: resources[indexPath.row])
 		}
+	}
+	
+	// MARK: - Private methods
+	
+	private func setupTableView () {
+		self.tableView.register(HeroTableViewCell.self, forCellReuseIdentifier: cellId)
 	}
 }

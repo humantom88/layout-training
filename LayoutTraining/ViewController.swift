@@ -10,10 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, HeroTableDelegate {
 
-	func handleHeroSelect(hero: HeroEntity) {
-		self.heroCardView?.updateHeroCard(entity: hero)
-	}
-	
 	var heroCardView: HeroCardView?
 	
 	let bottomContainerView: UIView = {
@@ -38,6 +34,14 @@ class ViewController: UIViewController, HeroTableDelegate {
 		setupLayout()
 	}
 	
+	// Protocol Conformance
+	// HeroTableDelegate
+	
+	func handleHeroSelect(hero: HeroEntity) {
+		self.heroCardView?.updateHeroCard(entity: hero)
+	}
+	
+	// Private methods
 	private func setupSubviews() {
 		self.heroCardView = HeroCardView()
 		if let heroCard = self.heroCardView {

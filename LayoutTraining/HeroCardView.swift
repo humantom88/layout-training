@@ -14,7 +14,6 @@ class HeroCardView: UIView, HeroCardProtocol {
 		let imageView = UIImageView(image: UIImage(named: "team"))
 		imageView.backgroundColor = UIColor(white: 0, alpha: 0.8)
 		imageView.contentMode = .scaleAspectFit
-		imageView.clipsToBounds = false
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		
 		// Setup Layer
@@ -56,8 +55,8 @@ class HeroCardView: UIView, HeroCardProtocol {
 		super.init(coder: aDecoder)
 	}
 	
-	// Protocol Conformance
-	// HeroCardProtocol
+	// MARK: - Protocol Conformance
+	// MARK: - HeroCardProtocol
 
 	func updateHeroCard(entity: HeroEntity) {
 		heroImageView.image = UIImage(named: entity.resourceId)
@@ -71,7 +70,7 @@ class HeroCardView: UIView, HeroCardProtocol {
 		heroImageView.layer.shadowPath = createShadowPath(bounds: heroImageView.frame)
 	}
 	
-	// Private Methods
+	// MARK: - Private Methods
 
 	private func createShadowPath (bounds: CGRect) -> CGMutablePath {
 		let shadowHeight: CGFloat = bounds.height * 0.05
